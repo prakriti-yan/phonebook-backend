@@ -40,7 +40,8 @@ let persons = [
 	})
 
 	app.get('/', (req, res)=>{
-		res.send('<h>Hello world!</h>')
+		const messgae = 'hello world!'
+		res.send(messgae)
 	})
 
 	app.get('/info', (req, res)=>{
