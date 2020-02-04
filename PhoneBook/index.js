@@ -39,6 +39,10 @@ let persons = [
 		res.json(persons)
 	})
 
+	app.get('/', (req, res)=>{
+		res.send("<h>Hello world!</h>")
+	})
+
 	app.get('/info', (req, res)=>{
 		const data = new Date()
 		const text = `Phonebook has info for ${persons.length} people`
