@@ -4,8 +4,8 @@ const mongoose = require('mongoose')
 // const name = process.argv[3]
 // const number = process.argv[4]
 
-// const url=process.env.MONGODB_URL
-const url = 'mongodb+srv://fullstack:fullstack@cluster0-bo2qy.mongodb.net/phonebook-app?retryWrites=true&w=majority'
+const url=process.env.MONGODB_URL
+// const url = 'mongodb+srv://fullstack:fullstack@cluster0-bo2qy.mongodb.net/phonebook-app?retryWrites=true&w=majority'
 
 
 mongoose.connect(url, { useNewUrlParser:true })
