@@ -1,11 +1,12 @@
+require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const app = express()
 const cors = require('cors')
+const Person = require('./models/person')
 
 app.use(bodyParser.json())
-// app.use(morgan('tiny'))
 app.use(cors())
 app.use(express.static('build'))
 
@@ -38,7 +39,9 @@ let persons = [
 	]
 
 	app.get('/api/persons', (req, res)=>{
-		res.json(persons)
+		// res.json(persons)
+		Person.find({})
+		.then(persons=>res.json(persons.toJSON()))
 	})
 
 	app.get('/info', (req, res)=>{
