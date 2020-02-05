@@ -41,7 +41,9 @@ let persons = [
 	app.get('/api/persons', (req, res)=>{
 		// res.json(persons)
 		Person.find({})
-		.then(persons=>res.json(persons.toJSON()))
+		.then(persons=>{
+			res.json(persons.map(person=>
+				person.toJSON()))})
 	})
 
 	app.get('/info', (req, res)=>{
@@ -93,7 +95,8 @@ let persons = [
 	  
 	  app.use(unknownEndpoint)
 
-	const PORT = process.env.PORT ||3001
+	// const PORT = process.env.PORT ||3001
+	const PORT = 3001
 	app.listen(PORT, () =>{
 		console.log(`Server is running is port ${PORT}!`)
 	})
