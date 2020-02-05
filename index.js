@@ -117,13 +117,15 @@ app.use(morgan(':method :url :status :response-time ms - :body - :req[content-le
 	app.use(unknownEndpoint)
 
 	const errorHandler = (error, req, res, next) =>{
-		console.error(error)
+		// console.error(error)
 		if (error.name==='CastError' && error.kind === 'ObjectId'){
-			return response.status(400).send({ error: 'malformatted id' })
-		} 
+			return res.status(400).send({ error: 'malformatted id' })
+		} else if (error.name === 'ValidationError') {
+			return res.status(400).json({ error: error.message })}
 		next(error)
 	}
 	app.use(errorHandler)
+	
 	const PORT = process.env.PORT ||3001
 	app.listen(PORT, () =>{
 		console.log(`Server is running is port ${PORT}!`)
