@@ -1,9 +1,5 @@
 const mongoose = require('mongoose')
 
-// const password = process.argv[2]
-// const name = process.argv[3]
-// const number = process.argv[4]
-
 const url=process.env.MONGODB_URL
 
 mongoose.connect(url, { useNewUrlParser:true })
@@ -28,27 +24,3 @@ personSchema.set('toJSON', {
 })
 
 module.exports = mongoose.model('Person', personSchema)
-// const Person = mongoose.model('Person', personSchema)
-
-// const person = new Person({
-//     name: `${name}`,
-//     number: `${number}`,
-// })
-
-// if (name && person){
-// person.save().then(response=>{
-//     console.log('person saved:', response)
-//     mongoose.connect.close()
-// })}
-
-// else {
-    
-//     Person.find({}).then(result=>{
-//         console.log('phonebook:')
-//         result.forEach(person=>{
-//             console.log(person.name, person.number)
-//         })
-//         mongoose.connect.close()
-//     })
-// }
-
